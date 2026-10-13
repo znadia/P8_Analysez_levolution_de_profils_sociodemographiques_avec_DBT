@@ -1,0 +1,62 @@
+version: 2
+
+models:
+  - name: int_orders
+    description: Pré-agrégation des données OpenClassrooms par année, tranche d'âge, genre et région
+    columns:
+      - name: year_started
+        description: Année de début du parcours de l'étudiant
+        data_tests:
+          - not_null
+      - name: age_group
+        description: Tranche d'âge des étudiants
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['20-24 ans', '25-29 ans', '30-34 ans', '35-39 ans', '40-44 ans', '45-49 ans', '50-54 ans', '55-59 ans', '60 ans ou plus']
+      - name: gender
+        description: Genre des étudiants 
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F', 'NR']
+      - name: region
+        description: Région de résidence de l'étudiant
+        data_tests:
+          - not_null
+      - name: nb_etudiants
+        description: Nombre d'étudiants agrégés
+        data_tests:
+          - not_null
+
+  - name: int_insee
+    description: Données démographiques INSEE harmonisées par région, genre, année et tranche d'âge (alignées avec OCR)
+    columns:
+      - name: years
+        description: Année de référence
+        data_tests:
+          - not_null
+      - name: age_group
+        description: Tranche d'âge harmonisée avec les données OCR
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['20-24 ans', '25-29 ans', '30-34 ans', '35-39 ans', '40-44 ans', '45-49 ans', '50-54 ans', '55-59 ans', '60 ans ou plus']
+      - name: gender
+        description: Genre de la population
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F']
+      - name: region
+        description: Région française
+        data_tests:
+          - not_null
+      - name: population
+        description: Effectif de la population
+        data_tests:
+          - not_null

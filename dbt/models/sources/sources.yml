@@ -1,0 +1,18 @@
+version: 2
+
+sources:
+  - name: data
+    database: OCR_DB
+    schema: raw
+    tables:
+      - name: ORDERS
+    
+  - name: insee
+    description: 4 fichiers  des Données démographiques INSEE par région, sexe et âge
+    database: OCR_DB
+    schema: raw
+    tables:
+      - name: INSEE_POP_2022
+      - name: INSEE_POP_2023
+      - name: INSEE_POP_2024
+      - name: INSEE_POP_2025

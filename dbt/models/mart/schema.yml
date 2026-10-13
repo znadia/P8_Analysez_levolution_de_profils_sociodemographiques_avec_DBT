@@ -1,0 +1,95 @@
+version: 2
+
+models:
+  - name: mart_age
+    description: Répartition des étudiants OCR par tranche d'âge et par année
+    columns:
+      - name: year_started
+        description: Année de début du parcours de l'étudiant
+        data_tests:
+          - not_null
+      - name: age_group
+        description: Tranche d'âge des étudiants
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['20-24 ans', '25-29 ans', '30-34 ans', '35-39 ans', '40-44 ans', '45-49 ans', '50-54 ans', '55-59 ans', '60 ans ou plus']
+      - name: nb_etudiants
+        description: Nombre d'étudiants OCR
+        data_tests:
+          - not_null
+
+  - name: mart_genre
+    description: Répartition des étudiants OCR par genre et par année
+    columns:
+      - name: year_started
+        description: Année de début du parcours de l'étudiant
+        data_tests:
+          - not_null
+      - name: gender
+        description: genre des étudiants
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F', 'NR']
+      - name: nb_etudiants
+        description: Nombre d'étudiants OCR
+        data_tests:
+          - not_null
+
+  - name: mart_region
+    description: Répartition des étudiants OCR par région et par année
+    columns:
+      - name: year_started
+        description: Année de début du parcours de l'étudiant
+        data_tests:
+          - not_null
+      - name: region
+        description: Région de résidence des étudiants
+        data_tests:
+          - not_null
+      - name: nb_etudiants
+        description: Nombre d'étudiants OCR
+        data_tests:
+          - not_null
+
+  - name: mart_final
+    description: Fusion OCR et INSEE pour comparer les étudiants et la population par année, région, genre et âge
+    columns:
+      - name: years
+        description: Année de référence OCR (year_started) et INSEE (years)
+        data_tests:
+          - not_null
+
+      - name: age_group
+        description: Tranche d'âge
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['20-24 ans', '25-29 ans', '30-34 ans', '35-39 ans', '40-44 ans', '45-49 ans', '50-54 ans', '55-59 ans', '60 ans ou plus']
+
+      - name: gender
+        description: Genre
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ["M", "F"]
+
+      - name: region
+        description: Région (DOM regroupé en DROM)
+        data_tests:
+          - not_null
+
+      - name: nb_etudiants_ocr
+        description: Nombre d'étudiants OpenClassrooms
+        data_tests:
+          - not_null
+
+      - name: population_insee
+        description: Population INSEE
+        data_tests:
+          - not_null

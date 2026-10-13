@@ -1,0 +1,69 @@
+version: 2
+
+models:
+  - name: stg_orders
+    description: Données OpenClassrooms nettoyées par étudiants, régions, genres, tranches d'âge
+
+    columns:
+      - name: user_id
+        description : Identifiant de l'étudiant crypté
+        data_tests:
+          - not_null
+          
+      - name: category_name
+        description : Catégorie d'étude
+        data_tests:
+          - not_null
+      - name: age_group
+        description : Tranche d'âge de l'étudiant
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['20-24 ans', '25-29 ans', '30-34 ans', '35-39 ans', '40-44 ans', '45-49 ans', '50-54 ans', '55-59 ans', '60 ans ou plus']
+      - name: gender
+        description : Genre de l'étudiant harmonisé. ("NR"= non renseigné si vide)
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F', 'NR']
+      - name: region
+        description: Région de résidence de l'étudiant
+        data_tests:
+          - not_null
+      - name: year_started
+        description: Année de début du parcours de l'étudiant
+        data_tests:
+          - not_null
+  
+
+  - name: stg_insee
+    description: Données démographiques INSEE nettoyées par région, genre, année et tranche d'âge
+    columns:
+      - name: region
+        description: Région française. Les DOM sont regroupés en DROM
+        data_tests:
+          - not_null
+      - name: gender
+        description: Genre de la population
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['M', 'F']
+      - name: years
+        description: Année de référence
+        data_tests:
+          - not_null
+      - name: age_group
+        description: Tranche d'âge harmonisée avec les données OCR
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['AGE_20_24', 'AGE_25_29', 'AGE_30_34', 'AGE_35_39', 'AGE_40_44', 'AGE_45_49', 'AGE_50_54', 'AGE_55_59', 'AGE_60_PLUS']
+      - name: population
+        description: Effectif de la population
+        data_tests:
+          - not_null

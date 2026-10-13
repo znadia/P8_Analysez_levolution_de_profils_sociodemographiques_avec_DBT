@@ -1,0 +1,26 @@
+name: "my_new_project"
+version: "1.0.0"
+config-version: 2
+
+profile: "default"
+
+model-paths: ["models"]
+test-paths: ["tests"]
+
+target-path: "target"
+clean-targets:
+  - "target"
+  - "dbt_packages"
+
+models:
+  my_new_project:
+    example:
+      staging:
+        +materialized: view
+        +tags: ["staging"]
+      intermediate:
+        +materialized: view
+        +tags: ["intermediate"]
+      mart:
+        +materialized: table
+        +tags: ["mart"]
