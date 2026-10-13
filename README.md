@@ -37,11 +37,12 @@ Snowflake, dbt, SQL, Powerbi(graphique)
 
 ## Fichiers
 
-- `models/` projet dbt complet
-  - `sources/` déclaration et documentation des sources (données internes et INSEE)
-  - `staging/` nettoyage et mise en forme des données
-  - `intermediate/` harmonisation et pré-agrégation des données
-  - `marts/` tables finales prêtes pour l'analyse
-- `tests/` test personnalisé qui vérifie l'absence de doublons par étudiant et par année
-- `workflow` schéma du pipeline dbt, de la source aux tables finales
+- `dbt/` projet dbt complet
+  - `dbt_project.yml` configuration du projet
+  - `models/sources/` déclaration et documentation des sources (données internes et INSEE)
+  - `models/staging/` nettoyage et mise en forme des données
+  - `models/intermediate/` harmonisation et pré-agrégation des données
+  - `models/marts/` tables finales prêtes pour l'analyse
+  - `tests/` test personnalisé qui vérifie l'absence de doublons par étudiant et par année
+- `workflow.png` schéma du pipeline dbt, de la source aux tables finales
 - `donnees_finales.csv` jeu de données final nettoyé
