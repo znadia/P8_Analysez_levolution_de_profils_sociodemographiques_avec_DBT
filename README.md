@@ -1,5 +1,7 @@
 # P8 Analysez l'évolution du profil sociodémographique des étudiants Data d'OpenClassrooms
 
+L’entreprise et les données sont fictives
+
 ## Contexte
 
 OpenClassrooms souhaite mieux comprendre l'évolution du profil de ses étudiants inscrits aux parcours Data sur 4 ans (âge, genre, région).
